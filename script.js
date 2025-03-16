@@ -1,13 +1,11 @@
-let apkUrl = "./apk%20file/HappyPocket.apk"; // Encode space properly
-
 // Load and clean text file content
 fetch('./about/about.txt')
     .then(response => response.text())
     .then(text => {
-        // Remove lines with only '=' or '-' characters
+        // Remove empty lines and lines with only '=' or '-'
         let cleanedText = text
             .split('\n')
-            .filter(line => !/^[= -]+$/.test(line.trim()))
+            .filter(line => line.trim() && !/^[= -]+$/.test(line.trim()))
             .join('\n');
 
         // Convert **bold** to <strong> for proper formatting
@@ -20,16 +18,16 @@ fetch('./about/about.txt')
 
 // APK Install Button Click Event
 document.getElementById("installApk").addEventListener("click", function () {
-    let apkUrl = "./apk%20file/HappyPocket.apk"; // Fix space issue
+    let apkUrl = "https://raw.githubusercontent.com/AppStation-team/AppStation/main/apk%20file/HappyPocket.apk";
 
     // Create a hidden <a> element to force download
     let link = document.createElement("a");
     link.href = apkUrl;
-    link.download = "HappyPocket.apk"; // Suggest filename
+    link.download = "HappyPocket.apk"; // Suggested filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    // Optional: Show an alert to guide the user
+    // Show a user-friendly alert
     alert("Downloading APK... After download, open the file to install.");
 });
