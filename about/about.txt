@@ -1,0 +1,40 @@
+============================================
+📝 **Key Features**
+============================================
+📁 **Organized Storage**
+- Create custom sections (e.g., "ENGLISH") to manage files and notes.
+
+🗂️ **File Management**
+- Rename, delete, share, and preview various file types (PDFs, images, etc.).
+
+🔗 **Enhanced Sharing**
+- Seamless import from other apps, focusing on WhatsApp.
+
+🔍 **Smart Search**
+- Quickly locate files and notes via keyword search.
+
+🎨 **Modern UI & Themes**
+- Smooth animations with light/dark mode support.
+
+============================================
+💻 **Technology Stack**
+============================================
+- **Framework:** Apache Cordova  
+- **Languages:** HTML, CSS, JavaScript  
+- **Plugins:** File Plugin, In-App Browser, etc.  
+- **Platform:** Android (APK), with potential for iOS.  
+
+============================================
+⚙️ **Development Notes**
+============================================
+- Supports **multi-file selection** (no full folder uploads).  
+- Includes **lightweight file previews** for quick viewing.  
+- Optimized **animations** for smooth performance.  
+
+============================================
+🚀 **Future Considerations**
+============================================
+- Advanced search functionalities.  
+- Third-party service integrations.  
+- Enhanced file preview capabilities.  
+
