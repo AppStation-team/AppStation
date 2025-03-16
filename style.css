@@ -70,7 +70,7 @@ body {
     object-fit: cover;
 }
 main {
-    height: 550px;
+    height: 600px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.412);
 }
 .ab {
@@ -84,6 +84,17 @@ pre {
     padding: 10px;
     font-family: 'Inter', sans-serif;
 }
+.mid {
+    height: 70px;
+    width: 100%;
+    padding-left: 20px;
+}
 .ver {
-    padding-left: 10px;
+    height: 30%;
+}
+.date {
+    height: 30%;
+}
+.size {
+    height: 30%;
 }
