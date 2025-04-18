@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AppStation</title>
+  <link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/free/thumb/free-app-store-3d-icon-download-in-png-blend-fbx-gltf-file-formats--social-media-logo-technology-logos-pack-icons-10367925.png?f=webp">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+
+    /* ===== Top App Store Style Section ===== */
+    .top-section {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      flex-wrap: wrap;
+    }
+
+    .app-info {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .app-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .app-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .app-tagline {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .app-category {
+      font-size: 12px;
+      color: #007aff;
+      margin-top: 2px;
+    }
+
+    .action-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .ios-style-button {
+      padding: 8px 22px;
+      font-size: 16px;
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .ios-style-button:hover {
+      background-color: #005fcc;
+    }
+
+    .git-link img {
+      opacity: 0.7;
+      transition: 0.2s;
+    }
+
+    .git-link:hover img {
+      opacity: 1;
+    }
+
+    /* ===== Meta Info ===== */
+    .mid {
+      padding: 10px 20px;
+      background-color: #fff;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .mid h5 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    /* ===== Screenshot Carousel ===== */
+    .scrollcont {
+      margin-top: 10px;
+      padding: 20px;
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 20px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      height: 300px;
+      width: 180px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background: white;
+      scroll-snap-align: start;
+    }
+
+    .screen {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== About Section ===== */
+    .about-section, .feedback-section {
+      padding: 20px;
+      background-color: #fff;
+      margin-top: 10px;
+    }
+
+    .about-section h3, .feedback-section h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .about-section p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ===== Feedback Section ===== */
+    .review {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .profile-pic {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
+      flex-shrink: 0;
+    }
+
+    .review-text {
+      flex: 1;
+    }
+
+    .stars {
+      font-size: 16px;
+      color: #f5c518;
+      margin-bottom: 4px;
+    }
+
+    .review-text p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    /* ===== Footer Attribution ===== */
+    .footer-attribution {
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      background-color: #fff;
+      margin-top: 10px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .footer-attribution a {
+      color: #007aff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-attribution a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Responsive ===== */
+    @media screen and (max-width: 600px) {
+      .top-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .app-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .action-section {
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .mid {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .scrollcont {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .card {
+        width: calc(180px - 10px);
+      }
+      .ios-style-button {
+  /* existing styles */
+  transition: all 0.3s ease;
+}
+
+.ios-style-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(0, 122, 255, 0.5);
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.pop-effect {
+  animation: pop 0.3s ease;
+}
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <!-- App Store–style Top Section -->
+    <div class="top-section">
+      <div class="app-info">
+        <img src="/icons/MarkMI_icon.png" alt="App Icon" class="app-icon">
+        <div class="info-text">
+          <h1 class="app-title">MarkMI</h1>
+          <p class="app-tagline">Your perfect partner in presence</p>
+          <p class="app-category">Education</p>
+        </div>
+      </div>
+      <div class="action-section">
+        <button class="ios-style-button" onclick="window.open('https://raw.githubusercontent.com/AppStation-team/MarkMI-APP/7ab4a8a955ea8cfbadbf9d3c0063e6e07ba2fdfa/MarkMI.apk')">Get</button>
+        <a href="https://github.com/NishanthAcharya/MarkMI.git" class="git-link" title="View on GitHub">
+          <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/github.png" alt="GitHub"/>
+        </a>
+      </div>
+    </div>
+
+    <!-- Meta Info -->
+    <div class="mid">
+      <h5>Version: 1.0.0</h5>
+      <h5>Last modified: 18-04-2025</h5>
+      <h5>Size: 3.25 MB</h5>
+    </div>
+
+    <!-- Screenshot Carousel -->
+    <div class="scrollcont">
+      <div class="card"><img class="screen" src="https://raw.githubusercontent.com/AppStation-team/MarkMI-APP/0f6c0b3425e910b3312258b9b96cc6baa0a0d81f/Screenshots/WhatsApp%20Image%202025-04-18%20at%2018.14.21_6889bdbe.jpg" alt="Shot1"></div>
+      <div class="card"><img class="screen" src="https://raw.githubusercontent.com/AppStation-team/MarkMI-APP/0f6c0b3425e910b3312258b9b96cc6baa0a0d81f/Screenshots/WhatsApp%20Image%202025-04-18%20at%2018.14.22_5f9bdcc9.jpg" alt="Shot2"></div>
+      <div class="card"><img class="screen" src="https://raw.githubusercontent.com/AppStation-team/MarkMI-APP/0f6c0b3425e910b3312258b9b96cc6baa0a0d81f/Screenshots/WhatsApp%20Image%202025-04-18%20at%2018.14.23_87f98658.jpg" alt="Shot3"></div>
+      <div class="card"><img class="screen" src="https://raw.githubusercontent.com/AppStation-team/MarkMI-APP/0f6c0b3425e910b3312258b9b96cc6baa0a0d81f/Screenshots/WhatsApp%20Image%202025-04-18%20at%2018.14.22_172f5980.jpg" alt="Shot4"></div>
+      <div class="card"><img class="screen" src="https://raw.githubusercontent.com/AppStation-team/MarkMI-APP/0f6c0b3425e910b3312258b9b96cc6baa0a0d81f/Screenshots/WhatsApp%20Image%202025-04-18%20at%2018.14.23_a891e271.jpg" alt="Shot5"></div>
+    </div>
+
+    <!-- About -->
+    <div class="about-section">
+      <h3>About this app</h3>
+      <p>MarkMI is a smart attendance and presence tracking application designed for ease of use and accurate record-keeping. Whether you're a student or a professional, MarkMI helps ensure your attendance is always noted, wherever you are.</p>
+    </div>
+
+    <!-- Feedback -->
+    <div class="feedback-section">
+      <h3>User Feedback</h3>
+    
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/men/69.jpg" alt="Aarav" class="profile-pic">
+        <div class="review-text">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p><strong>Aarav S.</strong> – Super handy! Love the smooth interface and accurate tracking. 💯</p>
+        </div>
+      </div>
+    
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Meera" class="profile-pic">
+        <div class="review-text">
+          <div class="stars">⭐⭐⭐⭐</div>
+          <p><strong>Sara.</strong> – Useful for daily logs, but I'd love a dark mode!</p>
+        </div>
+      </div>
+    
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="Rohan" class="profile-pic">
+        <div class="review-text">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p><strong>Bob steve.</strong> – Downloaded it for fun, but now I use it every day!</p>
+        </div>
+      </div>
+    
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="Sana" class="profile-pic">
+        <div class="review-text">
+          <div class="stars">⭐⭐⭐</div>
+          <p><strong>Jasmine Jade</strong> – Works okay, just a few minor bugs here and there.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Attribution -->
+    <div class="footer-attribution">
+      <p>MarkMI is developed by <a href="https://github.com/NishanthAcharya" target="_blank" rel="noopener">HappyNishu</a> © 2025</p>
+    </div>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // Confetti effect for the Get button
+    document.querySelector('.ios-style-button').addEventListener('click', function(e) {
+      // Prevent default if you want to control when the download starts
+      // e.preventDefault();
+      
+      // Create confetti effect
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#007aff', '#34a853', '#fbbc05', '#ea4335', '#4285f4']
+      });
+      
+      // Optional: Add a small delay before opening the download link
+      setTimeout(() => {
+        // The existing onclick handler will still work
+      }, 800);
+    });
+    document.querySelector('.ios-style-button').addEventListener('click', function(e) {
+  // Add pop effect class
+  this.classList.add('pop-effect');
+  
+  // Remove the class after animation completes
+  setTimeout(() => {
+    this.classList.remove('pop-effect');
+  }, 300);
+  
+  // Confetti effect
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: ['#007aff', '#34a853', '#fbbc05', '#ea4335', '#4285f4']
+  });
+});
+  </script>
+</body>
+</html>
